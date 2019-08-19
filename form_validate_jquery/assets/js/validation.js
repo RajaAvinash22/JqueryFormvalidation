@@ -102,7 +102,7 @@ function validateCity(id,err)
 return flag;
 }
 
-function validateGender(id,err)
+function validateGender(err)
 {
   flag= false;
   if($('input[type=radio][name=Gender]:checked').length == 0)
@@ -128,7 +128,7 @@ function validateForm()
 
         validateMobile("#mobile","#mobileErr");
     
-        validateGender("#Gender","#genderErr");
+        validateGender("#genderErr");
 
         requiredField("#dob","#dobErr");
 
