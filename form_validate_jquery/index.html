@@ -22,48 +22,48 @@
                     <!--Full Name-->          
                             <div class="row">
                                     <label>Full Name</label>
-                                    <input type="text" name="name" id ="fname" onblur="validateName(fname,nameErr)">
+                                    <input type="text" name="name" id ="fname" onblur="validateName('#fname','#nameErr')">
                                     <span class="error" id="nameErr"></span>
                                 </div>
                     <!--Email Address--> 
                                 <div class="row">
                                     <label>Email Address</label>
-                                    <input type="email" name="email" id ="email" onblur="validateEmail(email,emailErr)" >
+                                    <input type="email" name="email" id ="email" onblur="validateEmail('#email','#emailErr')" >
                                     <span class="error" id="emailErr"></span>               
                                 </div>
                     <!--Mobile Number--> 
                                 <div class="row">
                                     <label>Mobile Number</label>
-                                    <input  type="text" name="mobile" id = "mobile" onblur="validateMobile(mobile,mobileErr)" >
+                                    <input  type="text" name="mobile" id = "mobile" onblur="validateMobile('#mobile','#mobileErr')" >
                                     <span class="error" id="mobileErr"></span>
                                 </div>
-                    <!--Gender 
+                    <!--Gender--> 
                                 <div class="row">
                                     <label>Gender</label>
-                                    <div class="form-inline" id="GenR" >
-                                        <label><input type="radio" id="gen" name="Gender" value="Male" onblur="validateGender(gen,genderErr)"> Male</label>
-                                        <label><input type="radio" id="gen" name="Gender"  value="Female" onblur="validateGender(gen,genderErr)"> Female</label> 
-                                        <label><input type="radio" id="gen" name="Gender"  value="Others" onblur="validateGender(gen,genderErr)"> Others</label> 
+                                    <div class="form-inline"  > 
+                                        <input  id="Gender" type="radio"  name=Gender onblur="validateGender('#Gender','#genderErr')"> Male
+                                        <input  id="Gender" type="radio" name=Gender onblur="validateGender('#Gender','#genderErr')"> Female
+                                        <input  id="Gender" type="radio" name=Gender onblur="validateGender('#Gender','#genderErr')"> Others
                                     </div>
                                     <span class="error" id="genderErr"></span>
-                                </div>-->
+                                </div>
                     <!--D.O.B--> 
                                 <div class="row">
                                     <label>D.O.B.</label>
-                                    <input type="date" placeholder ="dd/mm/year" name="dob" id ="dob" onblur="requiredField(dob,dobErr)">
+                                    <input type="date" placeholder ="dd/mm/year" name="dob" id ="dob" onblur="requiredField('#dob','#dobErr')">
                                     <span class="error" id="dobErr"></span>
                                 </div>
                     <!--Address 1--> 
                                 <div class="row">
                                     <label>Address</label>
-                                    <input type="text" name="addr" maxlength="50" id ="addr" onblur="validateAddr(dob,dobErr)">
+                                    <input type="text" name="addr" maxlength="50" id ="addr" onblur="validateAddr('#addr','#addrErr')">
                                     <span class="error" id="addrErr"></span>
                                 </div>
                     
                     <!--City -->
                                 <div class="row">
                                     <label>City</label>
-                                    <select name="City" id="city" onblur="validateCity(city,cityErr)">
+                                    <select name="City" id="city" onblur="validateCity('#city','#cityErr')">
                                         <option value="Select City">Select City</option>
                                         <option value="Select">Jaipur</option>
                                         <option value="Select">Jodhpur</option>

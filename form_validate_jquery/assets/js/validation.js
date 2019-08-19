@@ -1,7 +1,7 @@
 function requiredField(id,err)
 {
   let flag = false;
-  if(id.value =="")
+  if($(id).val() == "")
   {
    $(id).css("border" , "2px solid red");
     $(err).text("** Required  Cannot be null");
@@ -19,15 +19,15 @@ function requiredField(id,err)
 function validateName(id,err)
 { 
   flag= false;
-  var pattern =/^[a-zA-Z]*$/;
-  if(pattern.test(id.value) &&  id.value.length >=7 &&  id.value.length<=16  &&   requiredField(id,err))
+  var pattern =/^[a-zA-Z\s]*$/;
+  if(pattern.test($(id).val()) &&  $(id).val().length >=7 &&  $(id).val().length<=20  &&   requiredField(id,err))
   {
   $(id).css("border" , "2px solid green");
   $(err).text("");
   flag = true;
   }else{
     $(id).css("border" , "2px solid red");
-    $(err).text("** Please Input Proper Name : min char = 7  &  max char = 16");
+    $(err).text("** Please Input Proper Name : min char = 7  &  max char = 20");
     flag = false;
   }
   return flag;
@@ -37,7 +37,7 @@ function validateEmail(id,err)
 {
   flag= false;
   var pattern=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-  if(pattern.test(id.value) && requiredField(id,err))
+  if(pattern.test($(id).val()) && requiredField(id,err))
   {
       $(id).css("border" , "2px solid green");
       $(err).text("");
@@ -55,7 +55,7 @@ function validateMobile(id,err)
 {
   flag=false;
   var pattern=/^[0-9]+$/;
-  if(pattern.test(id.value) && id.value.length ==10  && requiredField(id,err) )
+  if(pattern.test($(id).val()) && $(id).val().length ==10  && requiredField(id,err) )
   { $(id).css("border" , "2px solid green");
   $(err).text("");
   flag = true; 
@@ -71,8 +71,8 @@ return flag;
 function validateAddr(id,err)
 {
   flag = false;
-  var pattern= /^[0-9a-zA-Z]+$/;
-  if(pattern.test(id.value) && requiredField(id,err) )
+  var pattern= /[a-zA-Z0-9_+-,\s]*$/;
+  if(pattern.test($(id).val()) && $(id).val().length >10 && requiredField(id,err) )
   { $(id).css("border" , "2px solid green");
   $(err).text("");
   flag = true; 
@@ -88,7 +88,7 @@ return flag;
 function validateCity(id,err)
 {
   flag = false;
-  if(id.value=="Select City" )
+  if($(id).val() == "Select City" )
   {
   $(id).css("border" , "2px solid red");
   $(err).text("** Please Select City");
@@ -102,50 +102,38 @@ function validateCity(id,err)
 return flag;
 }
 
-/*function validateGender(id,err)
+function validateGender(id,err)
 {
   flag= false;
   if($('input[type=radio][name=Gender]:checked').length == 0)
-  {
-      
+  {  
     $(err).text("Please select your gender ");
          flag = false;
     
-  }else{
+    
+  }else
+  {
     $(err).text("");
     flag=true;
+    
   }
   return flag;
-}*/
+}
 
 function validateForm()
 {
-       var ename = document.getElementById("fname");
-       var err1 = document.getElementById("nameErr"); 
-        validateName(ename,err1);
+        validateName("#fname","#nameErr");
 
-       var email = document.getElementById("email");
-       var err2 = document.getElementById("emailErr");
-        validateEmail(email,err2);
+        validateEmail("#email","#emailErr");
 
-       var emob = document.getElementById("mobile");
-       var err3 = document.getElementById("mobileErr");
-       validateMobile(emob,err3);
+        validateMobile("#mobile","#mobileErr");
+    
+        validateGender("#Gender","#genderErr");
 
-      /* var egender = document.getElementsById("gen");
-       var err7 = document.getElementById("genderErr");
-       validateGender(egender,err7);*/
+        requiredField("#dob","#dobErr");
 
-       var edob = document.getElementById("dob");
-       var err4 = document.getElementById("dobErr");
-       requiredField(edob,err4);
+        validateAddr("#addr","#addrErr");
 
-       var eaddr = document.getElementById("addr");
-       var err5 = document.getElementById("addrErr");
-       validateAddr(eaddr,err5);
-
-       var ecity = document.getElementById("city");
-       var err6 = document.getElementById("cityErr");
-       validateCity(ecity,err6);
+        validateCity("#city","#cityErr");
     
 }
